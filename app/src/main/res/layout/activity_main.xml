@@ -7,61 +7,110 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textViewTitle"
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="30dp"
+        android:text="Calculator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.100000024" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="80dp"
+        android:text="Num1:"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintHorizontal_bias="0.019"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="56dp"
+        android:text="Num2:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <EditText
-        android:id="@+id/editTextTextName"
+        android:id="@+id/editTextNumber1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:ems="10"
-        android:hint="Nome"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/textViewTitle"
-        app:layout_constraintStart_toStartOf="@+id/textViewTitle"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
-
-    <Button
-        android:id="@+id/buttonOla"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Olá"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextName"
-        app:layout_constraintHorizontal_bias="0.54"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextName"
-        android:onClick="buttonOlaClicked" />
-
-    <EditText
-        android:id="@+id/editTextNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="number"
-        android:text="0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.223"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-    <Button
-        android:id="@+id/buttonSomar"
+    <EditText
+        android:id="@+id/editTextNumber2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="buttonSomarClicked"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextNumber"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextNumber"
-        app:layout_constraintTop_toTopOf="@+id/editTextNumber" />
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumber1" />
+
+    <TextView
+        android:id="@+id/textViewResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:text="Result:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumber2">
+
+        <Button
+            android:id="@+id/buttonSum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="buttonSumClicked"
+            android:text="+" />
+
+        <Button
+            android:id="@+id/buttonSubtract"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:onClick="setButtonSubtractClicked"
+            android:text="-" />
+
+        <Button
+            android:id="@+id/buttonMultiplic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:onClick="buttonMultiplicClicked"
+            android:text="x" />
+
+        <Button
+            android:id="@+id/buttonDivided"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:onClick="buttonDividedClicked"
+            android:text="/" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

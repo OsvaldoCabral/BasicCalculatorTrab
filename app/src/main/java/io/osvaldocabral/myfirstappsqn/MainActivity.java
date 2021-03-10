@@ -7,104 +7,91 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView textViewTitle;
-    EditText editTextName;
-    EditText editTextNumber;
+    EditText editTextNumber1;
+    EditText editTextNumber2;
 
-    //TODO: fazer interface
+    Button buttonSum;
+    Button buttonSubtract;
+    Button buttonMultiplic;
+    Button buttonDivided;
+
+    TextView textViewResult;
+
+    int valor1;
+    int valor2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        textViewTitle = findViewById(R.id.textViewTitle);
+        editTextNumber1 = findViewById(R.id.editTextNumber1);
+        editTextNumber2 = findViewById(R.id.editTextNumber2);
 
-        editTextName = findViewById(R.id.editTextTextName);
-        editTextName.addTextChangedListener(onTextChanged());
+        editTextNumber1.addTextChangedListener(onTextChanged());
+        editTextNumber2.addTextChangedListener(onTextChanged());
 
-        editTextNumber = findViewById(R.id.editTextNumber);
+        buttonSum = findViewById(R.id.buttonSum);
+        buttonSubtract = findViewById(R.id.buttonSubtract);
+        buttonMultiplic = findViewById(R.id.buttonMultiplic);
+        buttonDivided = findViewById(R.id.buttonDivided);
 
-        textViewTitle.setText("Olá!");
+        textViewResult = findViewById(R.id.textViewResult);
 
-        Log.d("MainActivity", "onCreate Called");
     }
 
-    public void buttonOlaClicked(View view) {
-        setValueTextViewByEditTextView(textViewTitle, editTextName);
-        Toast.makeText(MainActivity.this,
-                "Bem vindo",
-                Toast.LENGTH_SHORT)
-                .show();
+    public Integer getIntegerValue(EditText editText) {
+        String util = editText.getText().toString();
+        if(util.isEmpty()) return 0;
+        return Integer.parseInt(util);
     }
 
-    public void buttonSomarClicked(View view) {
-        String aux = editTextNumber.getText().toString();
-        int num = Integer.parseInt(aux);
-
-        num++;
-        editTextNumber.setText(String.valueOf(num));
+    public void fillValues() {
+        valor1 = getIntegerValue(editTextNumber1);
+        valor2 = getIntegerValue(editTextNumber2);
     }
 
     public TextWatcher onTextChanged() {
         return new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                setValueTextViewByEditTextView(textViewTitle, editTextName);
-            }
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                fillValues();
             }
         };
     }
 
-    public void setValueTextViewByEditTextView(TextView textView, EditText editText) {
-        String name = editText.getText().toString();
-        textView.setText(name);
+    public void fillResult(int result) {
+        textViewResult.setText("Result: " + String.valueOf(result));
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d("MainActivity", "onStart Called");
+    public void buttonSumClicked(View view) {
+        int sum = valor1 + valor2;
+        fillResult(sum);
     }
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.d("MainActivity", "onRestart Called");
+    public void setButtonSubtractClicked(View view) {
+        int sum = valor1 - valor2;
+        fillResult(sum);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("MainActivity", "onResume Called");
+    public void buttonMultiplicClicked(View view) {
+        int sum = valor1 * valor2;
+        fillResult(sum);
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d("MainActivity", "onPause Called");
+    public void buttonDividedClicked(View view) {
+        int sum = valor1 / valor2;
+        fillResult(sum);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d("MainActivity", "onDestroy Called");
-    }
-
-    //TODO: Criar função de chamar outra tela
 }
