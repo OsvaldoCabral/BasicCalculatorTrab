@@ -90,6 +90,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buttonDividedClicked(View view) {
+        if(valor2 != 0) {
+            Toast.makeText(MainActivity.this, "A divisão é infinita!", Toast.LENGTH_SHORT).show();
+            return;
+        }
         int sum = valor1 / valor2;
         fillResult(sum);
     }
